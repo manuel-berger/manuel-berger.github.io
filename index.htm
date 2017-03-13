@@ -133,12 +133,18 @@
 				color: #333;
 			}
 			
+			#projects div {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
 			#projects article {
 				display: block;
-				padding: 1em 0;
-				
+				padding: 1em 5%;
+				width: 40%;
 			}
-			#projects article:nth-child(odd) {
+			#projects article:nth-child(4n+0), 
+			#projects article:nth-child(4n+1) {
 				background: #eee;
 			}
 			
@@ -240,6 +246,7 @@
 			<h2 class="subtitled">Recent Projects</h2>
 			<p class="subtitle">Simplicity &amp; Performance</p>
 			
+			<div>
 			<article>
 				<h3><a href="https://www.mittag.at/">mittag.at</a></h3>
 				<p>Local lunch aggregator / crawler for Austria</p>
@@ -291,6 +298,7 @@
 				<p><img src="media/s-i_logo.jpg" alt="scribble-it - Let your ideas grow up." width="200" height="355" /></p>
 				<p>2009</p>
 			</article>
+			</div>
 		</section>
 		
 		<footer>
