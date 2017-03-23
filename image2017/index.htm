@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How to embed an image? #Web #performance #HTML #2017</title>
+    <meta charset="utf-8">
+    <style>
+	
+	body.remark-container {
+		background: #fff;
+	}
+	div.remark-slide-scaler {
+		box-shadow: none;
+	}
+	
+	body { font-family: 'Helvetica Neue'; }
+	h1, h2, h3 {
+		font-family: 'Helvetica Neue';
+		font-weight: normal;
+		line-height: 1em;
+	}
+	.remark-code, .remark-inline-code { 
+	  font-family: 'Menlo', mono; 
+	}
+	
+	.smallcode .remark-code {
+		font-size: 0.6em;
+	}
+	.remark-slide-number {
+	  display: none;
+	}
+	
+	h1 span {
+		font-size: 0.8em;
+		color: #F39019;
+	}
+	
+	.title p {
+		color: #F39019;
+		font-size: 1.6em;
+		
+	}
+	.title p span {
+		color: #A6A6A6;
+	}
+	
+	.hljs-default .hljs-type, .hljs-default .hljs-string, .hljs-default .hljs-number, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class, .hljs-default .hljs-quote, .hljs-default .hljs-template-tag, .hljs-default .hljs-deletion {
+		color: #F39019;
+	}
+	
+	.remark-code {
+		font-size: 1.66em;
+		line-height: 1.3em;
+	}
+	
+	.imagedesc p {
+		margin-top: -0.5em;
+		color: #A6A6A6;
+	}
+	
+	.quater {
+		width: 45%;
+		height: 47%;
+		margin-right: 5%;
+		float: left;
+		padding-top: 12%;
+		font-size: 2em;
+		border-bottom: 2px solid orange;
+	}
+	
+	.nr {
+		background: #F39019;
+		color: #fff;
+		padding: 0.1em 0.4em;
+		border-radius: 1em;
+		position: relative;
+		top: -0.8em;
+		left: -0.2em;
+	}
+	
+	.nr.done {
+		background: #a6a6a6;
+	}
+	
+	.quater code {
+		font-size: 1.2em;
+		color: #555;
+		min-width: 4.9em;
+		display: inline-block;
+		text-align: center;
+	}
+	
+	
+	.remark-slide-content h2 {
+		color: #F39019;
+		text-align: center;
+		font-size: 3em;
+	}
+	
+	.agenda {
+		padding-top: 0;
+	}
+	
+	.qa, .chart {
+		text-align: center;
+		font-size: 2em;
+	}
+	
+	.qa h2 {
+		color: #a6a6a6;
+		font-size: 5.5em;
+	}
+	
+	.qa p {
+		color: #F39019;
+		font-size: 1.3em;
+	}
+	
+	#bytes-per-page-by-type {
+		width: 100%;
+		height: 500px;
+	}
+	
+	svg {
+		overflow: visible;
+		transform-origin-x: 0;
+		transform-origin-y: 0;
+	}
+	
+	@keyframes fill {
+		0% {
+		  fill: #999;
+		}
+		50% {
+		  fill: #F39019;
+		}
+		100% {
+		  fill: #999;
+		}
+	}
+	#bytes-per-page-by-type .ct-series-a .ct-slice-pie {
+		fill: #999;
+		animation-name: fill;
+		animation-duration: 3s;
+		animation-iteration-count: infinite;
+	}
+	#bytes-per-page-by-type .ct-series-b .ct-slice-pie {
+		fill: #a6a6a6;
+	}
+	#bytes-per-page-by-type .ct-series-c .ct-slice-pie {
+		fill: #aaa;
+	}
+	#bytes-per-page-by-type .ct-series-d .ct-slice-pie {
+		fill: #bbb;
+	}
+	#bytes-per-page-by-type .ct-series-e .ct-slice-pie {
+		fill: #ccc;
+	}
+	#bytes-per-page-by-type .ct-series-f .ct-slice-pie {
+		fill: #ddd;
+	}
+	#bytes-per-page-by-type .ct-series-g .ct-slice-pie {
+		fill: #eee;
+	}
+	#bytes-per-page-by-type .ct-label {
+		font-weight: 400;
+		font-size: .9rem;
+	}
+	#bytes-per-page-by-type .ct-label:first-child {
+		fill: #fff;
+		font-size: 2rem;
+		font-weight: 200;
+	}
+	
+	.chart {
+		color: #a6a6a6;
+	}
+	.chart .imagedesc p {
+		margin-top: -2em;
+		font-size: 0.5em;
+	}
+	
+	a {
+		color: #a6a6a6;
+		text-decoration: none;
+	}
+	
+	.controls {
+		border-top: 1px solid #F39019;
+		text-align: center;
+		margin-top: 2em;
+		padding-top: 1em;
+	}
+	
+	.css ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.css li {
+		display: inline-block;
+		background: #a6a6a6;
+		color: #fff;
+		padding: 0.5em 0.8em;
+		border-radius: 0.3em;
+		margin: 1em;
+		
+		background: rgb(246,230,180); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(246,230,180,1) 0%, rgba(237,144,23,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(246,230,180,1) 0%,rgba(237,144,23,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6e6b4', endColorstr='#ed9017',GradientType=0 ); /* IE6-9 */
+		
+		text-shadow: 1px 2px 3px #333;
+		box-shadow: 1px 1px 2px #333;
+		
+		font-size: 1.5em;
+	}
+	
+	.css p {
+		margin: 0;
+	}
+	
+	.animated-logo .logo-green {
+		fill: #f00;
+	}
+	
+	.dark {
+		background: #333;
+	}
+	
+	.dark svg {
+		stroke: #fff;
+	}
+	
+	.check ul {
+        list-style: none;
+		font-size: 1.5em;
+    }
+
+    .check li {
+        position: relative;
+		margin: 1em 0;
+    }
+
+    .check li:before {
+        /*
+        The desired width gets defined in two places: The element width, and background size.
+        The height only gets defined once, in background size.
+        */
+        position: absolute;
+        display: block;
+        content: '✔︎'; /* bullet point, for screen readers */
+        text-indent: -999999px; /* move the bullet point out of sight */
+        height: 2em;
+        width: 2.5em;
+        left: -1.3em;
+        top: -0.5em;
+        background-repeat: no-repeat;
+        background-image: url('i/check.svg');
+        background-size: 1.3em 1.3em;
+        background-position: 0;
+    }
+	
+	table {
+		width: 100%;
+		text-align: center;
+		line-height: 2em;
+		margin-bottom: 1em;
+		font-size: 0.8em;
+	}
+	
+	.compression {
+		font-size: 1.3em;
+	}
+	
+	.yes {
+		background: #33CC00;
+	}
+	.no {
+		background: darkred;
+		color: #fff;
+	}
+	
+	td {
+		width: 9%;
+	}
+	
+	.compression td {
+		width: auto;
+	}
+	
+	.compression td:first-child {
+		width: 26%;
+	}
+	.compression td:nth-child(2) {
+		width: 18%;
+	}
+	.compression td:nth-child(3) {
+		width: 37%;
+	}
+	
+	.sep td {
+		border-bottom: 1px solid #F39019;
+	}
+	
+	img {
+		border: 1px solid #a6a6a6
+	}
+	
+	  
+    </style>
+	<link rel="stylesheet" href="i/chartist.min.css">
+  </head>
+  <body>
+	  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+    <style type="text/css">
+    .logo-gray{fill:#333}
+    .logo-green{fill:#33CC00}
+    .logo-white{fill:#fff}
+	
+	.icon-normal{color: #333}
+	
+	@keyframes logo-color {
+		0% {
+		  color: #333;
+		}
+		50% {
+		  color: #33CC00;
+		}
+		100% {
+		  color: #333;
+		}
+	}
+	.icon-invert {
+		color: #333;
+		animation-name: logo-color;
+		animation-duration: 3s;
+		animation-iteration-count: infinite;
+	}
+	
+    .logo-invert{color:#fff}
+    .logo-normal{color:#333}
+    </style>
+
+    <symbol id="logo-type" viewBox="0 0 1159 382">
+        <path fill="currentColor" d="M555.7,130.6c-5.5,0-9.9,3.6-9.9,9.2c0,5.4,4.3,9.2,9.9,9.2c5.5,0,9.9-3.8,9.9-9.2
+		C565.5,134.2,561.2,130.6,555.7,130.6z M486.8,164.1c-10.2,0-18.9,6.6-27.7,16.1c-3.5-10-10.4-16.1-23.2-16.1
+		c-10,0-18.9,6.2-26.1,14.2h-0.5l-1.2-12.1h-0.4l-11.4,3v81h14.2v-60.9c7.8-8.6,14.9-13,21.1-13c10.7,0,15.7,6.7,15.7,22.5v51.4
+		h14.2v-60.9c7.8-8.6,14.5-13,21.1-13c10.6,0,15.6,6.7,15.6,22.5v51.4h14.2V197C512.4,175.5,504.1,164.1,486.8,164.1z
+		 M629.4,240.8c-9.7,0-13-5.9-13-16.3v-46.7H639v-11.6h-22.7v-23.5l-12.2,3.3l-1.5,20.2l-13.1,0.9v10.7H602v46.5
+		c0,16.6,6.1,28,24,28c5.2,0,10.9-1.6,15.6-3.1l-2.8-10.7C636.1,239.5,632.3,240.8,629.4,240.8z M548.4,250.3h14.2v-84.1h-14.2
+		V250.3z M1008,164.1c-13.5,0-25.3,5.9-33,10.9l5.7,9.9c6.6-4.5,15.2-9,25.1-9c13.7,0,17.3,10.4,17.3,21.1
+		c-35.8,4-51.7,13.1-51.7,31.5c0,15,10.6,23.9,24.7,23.9c10.4,0,19.7-5.5,27.8-12.1h0.3l1.2,10h11.8v-51.5
+		C1037.2,177.8,1028.6,164.1,1008,164.1z M1023,229.7c-8.1,7.3-14.9,11.2-23,11.2c-8.3,0-14.7-4-14.7-13.5
+		c0-10.7,9.5-17.6,37.7-21.1V229.7z M1111.9,238.5c-2.8,1-6.6,2.2-9.5,2.2c-9.7,0-13-5.9-13-16.3v-46.7h22.7v-11.6h-22.7v-23.5h0
+		l-12.2,3.3l-1.5,20.3l-13.1,0.9v10.7h12.5v46.5c0,16.6,6.1,28,24,28c5.2,0,10.9-1.6,15.6-3.1L1111.9,238.5z M869.4,239.9h-16.3
+		c-11.4,0-14.9-3.8-14.9-9.2c0-4.7,2.4-7.4,5.4-10c3.8,1.9,8.5,2.9,12.6,2.9c17.1,0,30.8-11.2,30.8-29.2c0-7.1-2.9-13.5-6.9-17.3
+		h17.3v-10.9h-29.2c-3.1-1.2-7.3-2.1-11.9-2.1c-17.1,0-31.7,11.6-31.7,29.9c0,10,5.4,18.2,10.9,22.7v0.7
+		c-4.3,2.9-9.2,8.5-9.2,15.6c0,6.6,3.3,11.1,7.4,13.7v0.4l0.2,0c0,0,6.7,3.2,9,3c0.4,0,0.6,0.2,0.6,0.5c3.4,0.8,7,1.1,10,1.1h14.5
+		c10.9,0,17,2.6,17,10.4c0,8.8-10.6,17.1-26.6,17.1c-15.2,0-24.4-5.7-24.4-14.7c0-3.2,1.2-6.5,3.7-9.6l-8.2-4.1
+		c-5,4.6-8,10-8,15.6c0,14.5,14.2,22.7,34.8,22.7c26.1,0,42.6-13.5,42.6-29.1C898.8,245.9,889,239.9,869.4,239.9z M856.3,174.5
+		c9.9,0,17.8,7.3,17.8,19.5c0,12.3-8.1,20.1-17.8,20.1c-9.7,0-17.8-7.8-17.8-20.1C838.5,181.8,846.4,174.5,856.3,174.5z
+		 M696.5,240.8c-9.7,0-13-5.9-13-16.3v-46.7h22.7v-11.6h-22.7v-23.5h-0.1l-12.1,3.2l-1.5,20.3l-13.1,0.9v10.7h12.5v46.5
+		c0,16.6,6.1,28,24,28c5.2,0,10.9-1.6,15.6-3.1l-2.8-10.7C703.2,239.5,699.4,240.8,696.5,240.8z M763.2,164.1
+		c-13.5,0-25.3,5.9-33,10.9l5.7,9.9c6.6-4.5,15.2-9,25.1-9c13.7,0,17.3,10.4,17.3,21.1c-35.8,4-51.7,13.1-51.7,31.5
+		c0,15,10.6,23.9,24.7,23.9c10.4,0,19.7-5.5,27.8-12.1h0.3l1.2,10h11.8v-51.5C792.5,177.8,783.8,164.1,763.2,164.1z M778.3,229.7
+		c-8.1,7.3-14.9,11.2-23,11.2c-8.3,0-14.7-4-14.7-13.5c0-10.7,9.5-17.6,37.7-21.1V229.7z"/>
+        <path id="green-point" class="logo-green" d="M931.2,230.6c-5.7,0-10.4,4.5-10.4,11.1c0,6.2,4.7,10.7,10.4,10.7c5.5,0,10.2-4.5,10.2-10.7
+		C941.4,235,936.7,230.6,931.2,230.6z"/>
+    </symbol>
+    <symbol id="logo-icon" viewBox="0 0 1159 382">
+        <clipPath id="circle-clip-path">
+            <path d="M184.6,94.1c-66.7,0-120.8,54-120.8,120.7s54.1,120.7,120.8,120.7s120.8-54,120.8-120.7
+		S251.4,94.1,184.6,94.1z M184.6,310.3c-52.8,0-95.5-42.7-95.5-95.5s42.8-95.5,95.5-95.5s95.5,42.7,95.5,95.5
+		S237.4,310.3,184.6,310.3z" style="overflow:visible;"/>
+        </clipPath>
+
+        <ellipse id="white-circle" class="logo-white" cx="184.3" cy="214.5" rx="136.9" ry="136.8"/>
+
+        <path id="green-circle" class="logo-green" d="M219.7,82.1c-0.1,2.9-0.3,5.5-0.6,7.7c-0.4,2.9-1.3,6-2.9,9.3c51,13.8,88.5,60.4,88.5,115.8
+		c0,66.2-53.8,120-120.1,120c-66.3,0-120.1-53.7-120.1-120c0-29.2,10.4-55.9,27.8-76.7c-3.6-4.5-7.3-9-10.9-13.5
+		c-21.2,24.2-34.1,55.9-34.1,90.6c0,75.9,61.6,137.5,137.7,137.5s137.7-61.6,137.7-137.5C322.7,151.2,278.9,97.5,219.7,82.1z
+		 M153.5,99c-1.7-3.2-2.7-6.4-3.3-9.2c-0.2-2.1-0.4-4.6-0.5-7.5c-11.1,2.9-21.7,7.2-31.5,12.7c3.8,4.4,7.4,8.9,10.9,13.5
+		 C136.8,104.5,144.9,101.2,153.5,99z"/>
+
+        <path id="knife" fill="currentColor" d="M151,165.7c0-15.8-6.8-27.2-14.9-40.3C107,77.8,52.5,36.6,30.1,51.7C65.6,99.2,125,174.4,169.8,222.1
+		c0.1-11.3,0.5-23.2,1.2-34.8c-2.5-2.1-5-4.3-7.6-6.4C156.5,175.3,151,172,151,165.7z M199.1,213.8c0.3,13.1,0.2,25.8-0.6,36.8
+		c13.5,12,23.7,18.2,28.3,15.6C235.6,262.1,225.4,241.3,199.1,213.8z"/>
+
+        <path id="fork" fill="currentColor" d="M202.2,68.7c-0.1,5-10.5,5-10.4,0c0.1-4-1-40.6-1.4-55.3c-1.8,0-3.6-0.1-5.4-0.1c-1.8,0-3.6,0-5.4,0.1
+		c-0.4,14.7-1.3,51.3-1.3,55.3c-0.1,5-12,5-12-0.1c0-5.2,0.9-39.7,1.3-54.5c-3.9,0.3-7.7,0.8-11.5,1.3
+		c-1.2,15.3-4.2,56.9-2.5,72.7c1.7,8.2,7.3,19.1,26.2,26.9c0,0.1-18.9,165.9,5.2,165.9c23.9,0,5.3-165.8,5.2-165.9
+		c18.7-7.8,24.4-18.7,25.4-26.9c2.1-15.8-0.6-57.4-1.8-72.7c-3.9-0.6-7.8-1-11.7-1.3C202.2,29.2,202.3,64.8,202.2,68.7z"/>
+
+        <g style="clip-path:url(#circle-clip-path);" class="logo-green">
+            <rect id="RIGHT_tick" x="274.8" y="207" width="25.4" height="15.7"/>
+            <rect id="BOTTOM_tick" x="176.8" y="304.9" width="15.7" height="25.4"/>
+            <rect id="LEFT_tick" x="69.8" y="207" width="25.4" height="15.7"/>
+        </g>
+    </symbol>
+</svg>
+
+    <textarea id="source">
+
+class: bottom, title
+
+<p style="text-align: center; fill: #666;">
+</p>
+
+# How to embed an image? <span>#Web #performance #HTML #2017</span>
+
+Manuel Berger <span>- Mar 2017, Technologieplauscherl</span>
+
+---
+
+class: middle
+
+```xml
+<img src="picture.jpg" alt="Picture"
+	width="300px" height="200px">
+```
+.imagedesc[
+Embedd an image
+]
+
+---
+
+class: agenda/
+
+.quater[
+.nr[1]`CSS`
+]
+
+.quater[
+.nr[2]`<svg>`
+]
+
+.quater[
+.nr[3]`srcset`
+]
+
+.quater[
+.nr[4]`<picture>`
+]
+
+---
+
+class: qa
+
+##Why?
+
+Performance.
+
+---
+
+class: chart
+
+<div id="bytes-per-page-by-type"></div>
+
+<div class="bottom">
+
+<p>Average Bytes per Page</p>
+.imagedesc[
+Data from <a href="http://httparchive.org" target="_blank">httparchive.org</a>
+]
+
+</div>
+
+---
+
+class: css
+
+## CSS vs. Images
+
+- border-radius
+- text-shaddow
+- box-shaddow
+- gradients
+- <span style="mix-blend-mode: multiply" id="blend">blend modes</span>
+- filter, backdrop-filter
+
+<div class="controls">
+<p><label>filter: blur(<input type="range" oninput="document.body.style.filter = 'blur(' + this.value + 'px)';" value="0" max="10" step="any">px)</label></p>
+</div>
+
+---
+
+class: agenda/
+
+.quater[
+.nr.done[1]`CSS`
+]
+
+.quater[
+.nr[2]`<svg>`
+]
+
+.quater[
+.nr[3]`srcset`
+]
+
+.quater[
+.nr[4]`<picture>`
+]
+
+---
+
+class: middle
+
+<svg width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="logo-desc" role="img">
+    <desc id="logo-desc">mittag.at: Mittagsmenüs und Tagesteller</desc>
+    <use xlink:href="#logo-icon" class="icon-normal"/>
+    <use xlink:href="#logo-type" class="logo-normal"/>
+</svg>
+
+---
+
+class: middle
+
+<svg width="350%" height="350%" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="logo-desc" role="img">
+    <desc id="logo-desc">mittag.at: Mittagsmenüs und Tagesteller</desc>
+    <use xlink:href="#logo-icon" class="icon-normal"/>
+    <use xlink:href="#logo-type" class="logo-normal"/>
+</svg>
+
+---
+
+class: middle
+
+<svg width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="logo-desc" role="img">
+    <desc id="logo-desc">mittag.at: Mittagsmenüs und Tagesteller</desc>
+    <use xlink:href="#logo-icon" class="icon-normal"/>
+    <use xlink:href="#logo-type" class="logo-normal"/>
+</svg>
+
+---
+
+class: dark
+
+<svg width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="logo-desc" role="img" class="animated-logo">
+    <desc id="logo-desc">mittag.at: Mittagsmenüs und Tagesteller</desc>
+    <use xlink:href="#logo-icon" class="icon-normal"/>
+    <use xlink:href="#logo-type" class="logo-invert"/>
+</svg>
+
+---
+
+class: dark
+
+<svg width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="logo-desc" role="img" class="animated-logo">
+    <desc id="logo-desc">mittag.at: Mittagsmenüs und Tagesteller</desc>
+    <use xlink:href="#logo-icon" class="icon-invert"/>
+    <use xlink:href="#logo-type" class="logo-invert"/>
+</svg>
+
+---
+
+class: check
+
+## SVG
+
+- Fully scaleable
+- Less bytes
+- Inline for less requests
+- Customize
+- Animate, Script
+- Accessibility
+- Support >IE8 (= 97,88%)
+
+---
+
+## SVG
+
+```xml
+<img src="star.svg" alt="Star"
+	width="300px" height="200px">
+```
+.imagedesc[
+Embedd an external svg image
+]
+
+---
+
+## SVG
+
+```xml
+<img src="star.svg" alt="Star"
+	width="300px" height="200px">
+```
+.imagedesc[
+Embedd an external svg image
+]
+
+```xml
+<object data="star.svg" 
+	    type="image/svg+xml">
+	<img src="fallback-star.png" />
+</object>
+```
+.imagedesc[
+Embedd an external svg image as object
+]
+
+---
+
+class: center
+
+<svg height="90%" width="100%" 
+	 viewBox="0 0 32 32">
+	 
+	 <polygon fill="#F39019" points="16 22 7 28 11 18 2  12 12 12 16 2 20 12 30 12 21 18 25 28 "/>
+		
+</svg>
+
+.imagedesc[
+star.svg
+]
+
+---
+
+## SVG <svg width="1em" height="1em" viewBox="0 0 32 32"><polygon fill="#F39019" points="16 22 7 28 11 18 2 12 12 12 16 2 20 12 30 12 21 18 25 28 "/></svg>
+
+```xml
+<svg height="100%" width="100%" 
+	 viewBox="0 0 32 32">
+	 
+	<polygon fill="#F39019"
+		points="16 22 7 28 11 18 2 
+		12 12 12 16 2 20 12 30 12 21 
+		18 25 28 "/>
+		
+</svg>
+```
+.imagedesc[
+star.svg
+]
+
+---
+
+class: smallcode
+
+## SVG <svg width="3em" height="1em"><use xlink:href="#logo-icon" class="icon-normal"/></svg>
+
+```xml
+<svg viewBox="0 0 1159 382">
+    <clipPath id="circle-clip-path">
+        <path d="M184.6,94.1c-66.7,0-120.8,54-120.8,120.7s54.1,120.7,120.8,120.7s120.8-54,120.8-120.7
+	S251.4,94.1,184.6,94.1z M184.6,310.3c-52.8,0-95.5-42.7-95.5-95.5s42.8-95.5,95.5-95.5s95.5,42.7,95.5,95.5
+	S237.4,310.3,184.6,310.3z" style="overflow:visible;"/>
+    </clipPath>
+
+    <ellipse id="white-circle" class="logo-white" cx="184.3" cy="214.5" rx="136.9" ry="136.8"/>
+
+    <path id="green-circle" class="logo-green" d="M219.7,82.1c-0.1,2.9-0.3,5.5-0.6,7.7c-0.4,2.9-1.3,6-2.9,9.3c51,13.8,88.5,60.4,88.5,115.8
+	c0,66.2-53.8,120-120.1,120c-66.3,0-120.1-53.7-120.1-120c0-29.2,10.4-55.9,27.8-76.7c-3.6-4.5-7.3-9-10.9-13.5
+	c-21.2,24.2-34.1,55.9-34.1,90.6c0,75.9,61.6,137.5,137.7,137.5s137.7-61.6,137.7-137.5C322.7,151.2,278.9,97.5,219.7,82.1z
+	 M153.5,99c-1.7-3.2-2.7-6.4-3.3-9.2c-0.2-2.1-0.4-4.6-0.5-7.5c-11.1,2.9-21.7,7.2-31.5,12.7c3.8,4.4,7.4,8.9,10.9,13.5
+	 C136.8,104.5,144.9,101.2,153.5,99z"/>
+
+    <path id="knife" fill="currentColor" d="M151,165.7c0-15.8-6.8-27.2-14.9-40.3C107,77.8,52.5,36.6,30.1,51.7C65.6,99.2,125,174.4,169.8,222.1
+	c0.1-11.3,0.5-23.2,1.2-34.8c-2.5-2.1-5-4.3-7.6-6.4C156.5,175.3,151,172,151,165.7z M199.1,213.8c0.3,13.1,0.2,25.8-0.6,36.8
+	c13.5,12,23.7,18.2,28.3,15.6C235.6,262.1,225.4,241.3,199.1,213.8z"/>
+
+    <path id="fork" fill="currentColor" d="M202.2,68.7c-0.1,5-10.5,5-10.4,0c0.1-4-1-40.6-1.4-55.3c-1.8,0-3.6-0.1-5.4-0.1c-1.8,0-3.6,0-5.4,0.1
+	c-0.4,14.7-1.3,51.3-1.3,55.3c-0.1,5-12,5-12-0.1c0-5.2,0.9-39.7,1.3-54.5c-3.9,0.3-7.7,0.8-11.5,1.3
+	c-1.2,15.3-4.2,56.9-2.5,72.7c1.7,8.2,7.3,19.1,26.2,26.9c0,0.1-18.9,165.9,5.2,165.9c23.9,0,5.3-165.8,5.2-165.9
+	c18.7-7.8,24.4-18.7,25.4-26.9c2.1-15.8-0.6-57.4-1.8-72.7c-3.9-0.6-7.8-1-11.7-1.3C202.2,29.2,202.3,64.8,202.2,68.7z"/>
+
+    <g style="clip-path:url(#circle-clip-path);" class="logo-green">
+        <rect id="RIGHT_tick" x="274.8" y="207" width="25.4" height="15.7"/>
+        <rect id="BOTTOM_tick" x="176.8" y="304.9" width="15.7" height="25.4"/>
+        <rect id="LEFT_tick" x="69.8" y="207" width="25.4" height="15.7"/>
+    </g>
+</svg>
+```
+---
+
+```xml
+<svg style="display:none">
+  <symbol id="logo-icon"
+  		viewBox="0 0 1159 382">
+  	...
+  </symbol>
+</svg>
+
+<div>
+  <svg width="1em" height="1em">
+    <use xlink:href="#logo-icon"/>
+  </svg>
+</div>
+	
+```
+.imagedesc[
+Inline SVG using Symbol
+]
+
+---
+
+class: agenda/
+
+.quater[
+.nr.done[1]`CSS`
+]
+
+.quater[
+.nr.done[2]`<svg>`
+]
+
+.quater[
+.nr[3]`srcset`
+]
+
+.quater[
+.nr[4]`<picture>`
+]
+
+---
+
+## High resolution screens
+
+<svg class=big font-size=5 role=img viewBox="0 0 56 27" font-family=sans-serif aria-label="One phone has big pixels, the other has small pixels." style="max-height: 500px; width: 100%">
+ <defs>
+  <pattern id=img-intro-pixel width=3 patternUnits=userSpaceOnUse stroke-linecap=round x=0 y=0 height=3>
+   <rect fill=black width=3 x=0 height=3 y=0></rect>
+   <line y2=2.5 stroke=red x1=0.5 x2=0.5 y1=0.5></line>
+   <line y2=2.5 stroke=lime x1=1.5 x2=1.5 y1=0.5></line>
+   <line y2=2.5 stroke=blue x1=2.5 x2=2.5 y1=0.5></line>
+  </pattern>
+ </defs>
+
+ <rect width=6 fill=white stroke=black x=6 height=12 y=8 rx=1></rect>
+ <rect width=6 fill=white stroke=black x=36 height=12 y=8 rx=1></rect>
+
+ <line y2=24 stroke-width=3 stroke=brown x1=15 y1=16 x2=22></line>
+ <circle cx=10 cy=10 fill=url(#img-intro-pixel) stroke=black r=8></circle>
+ <line y2=24 stroke-width=3 stroke=brown x1=45 y1=16 x2=52></line>
+ <circle cx=120 transform=scale(0.333333) cy=30 r=24 stroke-width=3 fill=url(#img-intro-pixel) stroke=black></circle>
+
+ <text x=20 y=10 dominant-baseline=middle>1x</text>
+ <text x=50 y=10 dominant-baseline=middle>3x</text>
+</svg>
+
+.imagedesc[
+Illustration from WHATWG HTML spec
+]
+
+---
+
+class: center
+
+## Pixel image
+
+<img src="i/product.jpg" alt="Product"
+     srcset="i/product@2x.jpg 2x"	 
+     width="600" height="400">
+
+---
+
+## srcset
+
+```xml
+<img src="product.jpg" alt="Product"
+
+     srcset="product@2x.jpg 2x"
+	 
+     width="600" height="400">
+```
+
+---
+
+## Filesize & Compression
+
+<table class="compression">
+   <tr><th>Image<th>Dimensions<th>Quality<th>File size
+   <tr class=sep><td>original.jpg<td>2700x1800<td><td class=no>2.9 MB
+   <tr><td>product.jpg<td>600x400<td><td class=no>250 KB
+   <tr><td>product.jpg<td>600x400<td>Medium<td class=yes>32 KB
+</table>
+
+---
+
+## Filesize & Compression
+
+<table class="compression">
+   <tr><th>Image<th>Dimensions<th>Quality<th>File size
+   <tr class=sep><td>original.jpg<td>2700x1800<td><td>2.9 MB
+   <tr><td>product.jpg<td>600x400<td><td>250 KB
+   <tr class=sep><td>product.jpg<td>600x400<td>Medium<td class=yes>32 KB
+   <tr><td>product@2x.jpg<td>1200x800<td><td class=no>727 KB
+   <tr><td>product@2x.jpg<td>1200x800<td>Medium<td class=yes>88 KB
+</table>
+
+---
+
+## Filesize & Compression
+
+<table class="compression">
+   <tr><th>Image<th>Dimensions<th>Quality<th>File size
+   <tr class=sep><td>original.jpg<td>2700x1800<td><td>2.9 MB
+   <tr><td>product.jpg<td>600x400<td><td>250 KB
+   <tr class=sep><td>product.jpg<td>600x400<td>Medium<td class=yes>32 KB
+   <tr><td>product@2x.jpg<td>1200x800<td><td class=no>727 KB
+   <tr><td>product@2x.jpg<td>1200x800<td>Medium<td class=no>88 KB
+   <tr><td>product@2x.jpg<td>1200x800<td>Low &amp; High DPI mode<td class=yes>63 KB
+</table>
+
+.imagedesc[
+Compression with <a href="https://imageoptim.com/mozjpeg" target="_blank">imageoptim.com/mozjpeg</a>
+]
+
+---
+
+class: center
+
+## Responsive
+
+<svg viewBox="0 0 52 25.6" width="100%" aria-label="The upright-held phone shows a
+small wolf at the top, and the tablet shows the same image but it is bigger." role="img" class="full">
+
+ <rect width="6" fill="white" stroke="black" x="10" height="12" y="8" rx="1"></rect>
+ <rect fill="#716966" x="11" width="4" height="2" y="9"></rect>
+ <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="i/product.jpg" width="4" x="11" y="9" height="2.8"></image>
+
+ <rect width="20" fill="white" stroke="black" x="25" height="14" y="6" rx="1"></rect>
+ <line y2="6" stroke-width="1.1" stroke="black" x1="26" y1="20" x2="26"></line>
+ <rect fill="#716966" x="27" width="17" height="8.5" y="7"></rect>
+ <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="i/product.jpg" width="17" x="27" y="6.8" height="11.4"></image>
+
+</svg>
+
+.imagedesc[
+Illustration from WHATWG HTML
+]
+
+---
+
+## Responsive
+
+```xml
+<img src="small.jpg"
+     srcset="small.jpg 320w,
+             medium.jpg 640w,
+             large.jpg 1024w"
+     sizes="100vw"
+     alt="...">
+```
+
+
+---
+
+## Responsive
+
+```xml
+<img src="small.jpg"
+     srcset="small.jpg 320w,
+             medium.jpg 640w,
+             large.jpg 1024w"
+     sizes="(min-width: 640px) 640px, 
+	 		100vw"
+     alt="...">
+```
+
+
+---
+
+class: agenda/
+
+.quater[
+.nr.done[1]`CSS`
+]
+
+.quater[
+.nr.done[2]`<svg>`
+]
+
+.quater[
+.nr.done[3]`srcset`
+]
+
+.quater[
+.nr[4]`<picture>`
+]
+
+---
+
+class: center, middle
+
+<img src="i/flif.png" alt="FLIF" height="400" style="border: 0;">
+
+---
+
+## Image format support
+
+<table>
+ <tr><th>Format<th>IE<th>Edge<th>Firefox<th>Chrome<th>Safari<th>Opera<th>iOS Safari<th>Opera Mini<th>Android Browser<th>Chrome for Android
+ <tr><td>WebP<td class=no>11<td class=no>14<td class=no>49<td class=yes>53<td class=no>10<td class=yes>39<td class=no>10<td class=yes>all<td class=yes>52<td class=yes>51
+ <tr><td>JPEG XR<td class=yes>11<td class=yes>14<td class=no>49<td class=no>53<td class=no>10<td class=no>39<td class=no>10<td class=no>all<td class=no>52<td class=no>51
+ <tr><td>JPEG 2000<td class=no>11<td class=no>14<td class=no>49<td class=no>53<td class=yes>10<td class=no>39<td class=yes>10<td class=no>all<td class=no>52<td class=no>51
+</table>
+
+.imagedesc[
+Source: caniuse.com
+]
+
+---
+
+## `<picture>`
+	
+	
+```html
+<picture>
+ <source srcset="foo.webp"
+         type="image/webp">
+ <source srcset="foo.jxr"
+         type="image/vnd.ms-photo">
+ <img src="foo.jpg" alt="..."
+      width="100" height="150">
+</picture>
+```
+
+---
+
+class: agenda/
+
+.quater[
+.nr.done[1]`CSS`
+]
+
+.quater[
+.nr.done[2]`<svg>`
+]
+
+.quater[
+.nr.done[3]`srcset`
+]
+
+.quater[
+.nr.done[4]`<picture>`
+]
+
+---
+class: bottom, title
+
+<p style="text-align: center; fill: #666;">
+</p>
+
+# Thanks! <span>- www.mittag.at</span>
+
+Manuel Berger <span>- Mar 2017, Technologieplauscherl</span>
+
+
+
+    </textarea>
+    <script src="i/remark-latest.min.js"></script>
+	<script src="i/chartist.min.js"></script>
+    <script>
+	var slideshow = remark.create();
+	
+	slideshow.on('showSlide', function (slide) {
+		if (slide.getSlideIndex() == 4) {
+			initChart();
+	  }
+	});
+		
+	function sizeSVG() {
+		var scale = 1/parseFloat(document.getElementsByClassName('remark-slide-scaler')[0].style.transform.substring(6))
+		document.querySelector('#bytes-per-page-by-type svg').style.transform = "scale("+scale+")";
+	}
+
+	function initChart() {
+		new Chartist.Pie('#bytes-per-page-by-type', {
+		  labels: ['Images 1,6 MB', 'HTML 49 kB', 'Stylesheets 83kB', 'Scripts 417kB', 'Fonts 94kB', 'Video 199kB', 'Other 12kB'],
+		  series: [1664, 49, 83, 417, 94, 199, 12]
+	  	});
+		setTimeout(sizeSVG, 10);
+	}
+	initChart();
+	window.addEventListener('resize', function(event) {
+
+		setTimeout(sizeSVG, 10);
+	}, true);
+    </script>
+  </body>
+  </html>
