@@ -57,7 +57,13 @@
 				margin: 0 auto;
 				max-width: 1000px;
 			}
-						
+			
+			@media(max-width: 1019px) {
+				#services, #talks {
+					padding: 0 2em;
+				}
+			}
+			
 			#services h3 {
 				margin-bottom: 0;
 			}
@@ -135,17 +141,41 @@
 			
 			#projects article {
 				display: block;
-				padding: 1em 0;
-				
+				padding: 1em 2em;
 			}
 			#projects article:nth-child(odd) {
 				background: #eee;
 			}
 			
-			#projects article>* {
-				max-width: 1000px;
-				margin-left: auto;
-				margin-right: auto;
+			@media(min-width: 1020px) {
+			
+				#projects div.list {
+					display: flex;
+					flex-wrap: wrap;
+				}
+				
+				#projects article {
+					padding: 1em 0;
+					width: 50%;
+				}
+				#projects article:nth-child(odd) {
+					padding: 1em 0;
+					background: #fff;
+				}
+				#projects article.g {
+					background: #eee;
+				}
+				
+				#projects article div {
+					max-width: 425px;
+					margin: 0 auto 0 0;
+					padding: 0 0 0 50px;
+				}
+				#projects article:nth-child(odd) div {
+					max-width: 450px;
+					margin: 0 0 0 auto;
+					padding: 0 50px 0 0;
+				}
 			}
 			
 			footer {
@@ -195,7 +225,7 @@
 			<div id="services" class="clearfix">
 				<div>
 					<h3>Web Applications</h3>
-					<p>By combining visual thinking with development skills, I build great products. i.e. <a href="http://wappwolf.com/dropboxautomator" target="_blank">Dropbox Automator</a> <span class="featured">featured by <a href="http://futurezone.at/digital-life/dropbox-oesterreicher-pimpt-cloud-speicher/24.574.566" target="_blank">Futurezone</a>, <a href="http://lifehacker.com/5871755/dropbox-automator-automatically-processes-images-text-pdfs-and-other-files-in-your-dropbox-any-way-you-choose" target="_blank">Lifehacker</a>, <a href="http://techcrunch.com/2011/12/30/dropbox-automator-is-like-ifttt-for-dropbox" target="_blank">Techcrunch</a>, et al.</span></p>
+					<p>By combining visual thinking with development skills, I build digital products. i.e. <a href="http://wappwolf.com/dropboxautomator" target="_blank">Dropbox Automator</a> <span class="featured">featured by <a href="http://futurezone.at/digital-life/dropbox-oesterreicher-pimpt-cloud-speicher/24.574.566" target="_blank">Futurezone</a>, <a href="http://lifehacker.com/5871755/dropbox-automator-automatically-processes-images-text-pdfs-and-other-files-in-your-dropbox-any-way-you-choose" target="_blank">Lifehacker</a>, <a href="http://techcrunch.com/2011/12/30/dropbox-automator-is-like-ifttt-for-dropbox" target="_blank">Techcrunch</a>, et al.</span></p>
 				</div>
 				<div>
 					<h3>Mobile Apps</h3>
@@ -239,58 +269,72 @@
 			
 			<h2 class="subtitled">Recent Projects</h2>
 			<p class="subtitle">Simplicity &amp; Performance</p>
-			
-			<article>
-				<h3><a href="https://www.mittag.at/">mittag.at</a></h3>
-				<p>Local lunch aggregator / crawler for Austria</p>
-				<p>Fast and ubiquitous. iOS, Web, Crawler, Design, Product<br />Android app by Stephan Schober.</p>
-				<p><a href="https://www.mittag.at/"><img src="media/web-development.png" alt="Todays specials for Austria"> </a></p>
-				<p>Featured by <a href="http://derstandard.at/2000047231215/Menue-App-Mit-einem-Wisch-zum-naechsten-Tisch" target="_blank">derStandard</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Nachrichten.jpg" target="_blank">OÖ Nachrichten</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Oesterreich-OOE.jpg" target="_blank">Österreich</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Krone.jpg" target="_blank">Kronen Zeitung</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-14_Heute-OOE.jpg" target="_blank">Heute</a>, <a href="http://www.tips.at/zeitung-epaper/?ausgabe=tips-linz-zentrum&id=28344#/22" target="_blank">Tips</a>, <a href="http://www.meinbezirk.at/linz/wirtschaft/linzer-start-up-sucht-mittagsmenues-d1928638.html" target="_blank">Rundschau</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-08-04_liferadio-interview.mp3" target="_blank">Life Radio</a>, <a href="https://www.lt1.at/programm/23-11-2016/episode/mittag-at-2-linzer-gruenden-start-up" target="_blank">LT1</a></p>
-				<p style="marign-top: 20px;">Jun 2013 - now</p>
-			</article>
-			<article>
-				<h3><a href="https://itunes.apple.com/at/app/tour-fahrtenbuch-einfach-automatisch/id823479973?mt=8&at=1010lsSL">Tour</a></h3>
-				<p>Automatic Mileage Log for iPhone</p>
-				<p>Design and development lead of Tour - with the great team of <a href="http://troii.com/lang/en/" target="_blank">troii Software GmbH</a></p>
-				<p><a href="https://itunes.apple.com/at/app/tour-fahrtenbuch-einfach-automatisch/id823479973?mt=8&at=1010lsSL"><img src="media/iphone-app-linz.png" alt="Automatic Mileage Log App - Tour"> </a></p>
-				<p style="margin-top: 20px;">Featured by Apple as "Best new App"</p>
-				<p style="marign-top: 20px;">Oct 2013 - Apr 2016</p>
-			</article>
-			<article>
-				<h3><strong><a href="http://dropboxautomator.com" target="_blank">dropboxautomator.com</a></strong></h3>
-				<p>Automate your Dropbox!</p>
-				<p>My Sideproject which got to be the main product of Wappwolf. </p>
-				<p><a href="http://dropboxautomator.com/" target="_blank"><img height="73" width="73" alt="dropboxautomator.com" src="media/dropboxautomator_logo.png"> </a></p>
-				<p style="margin-top: 20px;">Featured on 
-					<a href="http://techcrunch.com/2011/12/30/dropbox-automator-is-like-ifttt-for-dropbox" target="_blank">Techcrunch</a>
-					<a href="http://lifehacker.com/5871755/dropbox-automator-automatically-processes-images-text-pdfs-and-other-files-in-your-dropbox-any-way-you-choose" target="_blank">Lifehacker</a>
-					<a href="http://www.ghacks.net/2011/12/30/dropbox-automator-process-dropbox-files-automatically" target="_blank">Ghacks Technology News</a>
-					<a href="http://www.iphoneblog.de/2011/12/30/mittler-zwischen-zwei-welten-dropboxautomator/" target="_blank">iPhoneBlog.de</a>
-					<a href="http://www.readwriteweb.com/archives/automatic_file_conversions_and_more_with_dropbox_a.php" target="_blank">ReadWriteWeb</a>
-				</p>
-				<p style="marign-top: 20px;">Dec 2011 - Aug 2012</p>
-			</article>
-			<article>
-				<h3><strong><a href="http://wappwolf.com/" target="_blank">Wappwolf.com</a></strong></h3>
-				<p>Webplattform for connecting webservices.</p>
-				<p>Co-Founder</p>
-				<p><a href="http://wappwolf.com/" target="_blank"><img height="64" width="214" alt="wappwolf.com" src="media/wappwolf.png"> </a></p>
-				<p>2010 - Aug 2012</p>
-				</dl>
-			</article>
-			<article>
-				<h3>slides.at</h3>
-				<p>Convert your PowerPoint presentations to HTML-Documents following the W3C Standards. <br />View them directly in the browser, without plugins and share them. - Stopped support.</p>
-				<p><img src="media/slides_logo.jpg" alt="Slides.at - Your presentations everywhere" width="200" height="260" /></p>
-				<p>"Best Of Innovation" Award by <a href="https://www.htl-leonding.at/" target="_blank">HTL Leonding</a> and Shortlist of Microsoft Innovation Award 2009</p>
-				<p>2009</p>
-			</article>
-			<article>
-				<h3>scribble-it</h3>
-				<p>Projectmanagement tool - Stopped support.</p>
-				<p><img src="media/s-i_logo.jpg" alt="scribble-it - Let your ideas grow up." width="200" height="355" /></p>
-				<p>2009</p>
-			</article>
+
+			<div class="list">
+				<article class="g">
+					<div>
+						<h3><a href="https://www.mittag.at/">mittag.at</a></h3>
+						<p>Search engine for restaurant offers</p>
+						<p>Fast and ubiquitous. iOS, Web, Crawler, Design, Product<br />Android app by Stephan Schober.</p>
+						<p><a href="https://www.mittag.at/"><img src="media/web-development.png" alt="Todays specials for Austria"> </a></p>
+						<p>Featured by <a href="http://derstandard.at/2000047231215/Menue-App-Mit-einem-Wisch-zum-naechsten-Tisch" target="_blank">derStandard</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Nachrichten.jpg" target="_blank">OÖ Nachrichten</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Oesterreich-OOE.jpg" target="_blank">Österreich</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-10_Krone.jpg" target="_blank">Kronen Zeitung</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-11-14_Heute-OOE.jpg" target="_blank">Heute</a>, <a href="http://www.tips.at/zeitung-epaper/?ausgabe=tips-linz-zentrum&id=28344#/22" target="_blank">Tips</a>, <a href="http://www.meinbezirk.at/linz/wirtschaft/linzer-start-up-sucht-mittagsmenues-d1928638.html" target="_blank">Rundschau</a>, <a href="https://dl.dropboxusercontent.com/u/84924/mittag/in-media/2016-08-04_liferadio-interview.mp3" target="_blank">Life Radio</a>, <a href="https://www.lt1.at/programm/23-11-2016/episode/mittag-at-2-linzer-gruenden-start-up" target="_blank">LT1</a></p>
+						<p style="marign-top: 20px;">Jun 2013 - now</p>
+					</div>
+				</article>
+				<article>
+					<div>
+						<h3><a href="https://itunes.apple.com/at/app/tour-fahrtenbuch-einfach-automatisch/id823479973?mt=8&at=1010lsSL">Tour</a></h3>
+						<p>Automatic Mileage Log for iPhone</p>
+						<p>Design and development lead of Tour - with the great team of <a href="http://troii.com/lang/en/" target="_blank">troii Software GmbH</a></p>
+						<p><a href="https://itunes.apple.com/at/app/tour-fahrtenbuch-einfach-automatisch/id823479973?mt=8&at=1010lsSL"><img src="media/iphone-app-linz.png" alt="Automatic Mileage Log App - Tour"> </a></p>
+						<p style="margin-top: 20px;">Featured by Apple as "Best new App"</p>
+						<p style="marign-top: 20px;">Oct 2013 - Apr 2016</p>
+					</div>
+				</article>
+				<article>
+					<div>
+						<h3><strong><a href="http://dropboxautomator.com" target="_blank">dropboxautomator.com</a></strong></h3>
+						<p>Automate your Dropbox!</p>
+						<p>My Sideproject which got to be the main product of Wappwolf. </p>
+						<p><a href="http://dropboxautomator.com/" target="_blank"><img height="73" width="73" alt="dropboxautomator.com" src="media/dropboxautomator_logo.png"> </a></p>
+						<p style="margin-top: 20px;">Featured on 
+							<a href="http://techcrunch.com/2011/12/30/dropbox-automator-is-like-ifttt-for-dropbox" target="_blank">Techcrunch</a>
+							<a href="http://lifehacker.com/5871755/dropbox-automator-automatically-processes-images-text-pdfs-and-other-files-in-your-dropbox-any-way-you-choose" target="_blank">Lifehacker</a>
+							<a href="http://www.ghacks.net/2011/12/30/dropbox-automator-process-dropbox-files-automatically" target="_blank">Ghacks Technology News</a>
+							<a href="http://www.iphoneblog.de/2011/12/30/mittler-zwischen-zwei-welten-dropboxautomator/" target="_blank">iPhoneBlog.de</a>
+							<a href="http://www.readwriteweb.com/archives/automatic_file_conversions_and_more_with_dropbox_a.php" target="_blank">ReadWriteWeb</a>
+						</p>
+						<p style="marign-top: 20px;">Dec 2011 - Aug 2012</p>
+					</div>
+				</article>
+				<article class="g">
+					<div>
+						<h3><strong><a href="http://wappwolf.com/" target="_blank">Wappwolf.com</a></strong></h3>
+						<p>Webplattform for connecting webservices.</p>
+						<p>Co-Founder</p>
+						<p><a href="http://wappwolf.com/" target="_blank"><img height="64" width="214" alt="wappwolf.com" src="media/wappwolf.png"> </a></p>
+						<p>2010 - Aug 2012</p>
+						</dl>
+					</div>
+				</article>
+				<article class="g">
+					<div>
+						<h3>slides.at</h3>
+						<p>Convert your PowerPoint presentations to HTML-Documents following the W3C Standards. <br />View them directly in the browser, without plugins and share them. - Stopped support.</p>
+						<p><img src="media/slides_logo.jpg" alt="Slides.at - Your presentations everywhere" width="200" height="260" /></p>
+						<p>"Best Of Innovation" Award by <a href="https://www.htl-leonding.at/" target="_blank">HTL Leonding</a> and Shortlist of Microsoft Innovation Award 2009</p>
+						<p>2009</p>
+					</div>
+				</article>
+				<article>
+					<div>
+						<h3>scribble-it</h3>
+						<p>Projectmanagement tool - Stopped support.</p>
+						<p><img src="media/s-i_logo.jpg" alt="scribble-it - Let your ideas grow up." width="200" height="355" /></p>
+						<p>2009</p>
+					</div>
+				</article>
+			</div>
 		</section>
 		
 		<footer>
