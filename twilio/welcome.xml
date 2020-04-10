@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Play>welcome.mp3</Play>
-	<Gather timeout="105" numDigits="1" action="mittag.xml" method="GET">
+	<Gather timeout="3" numDigits="1" action="mittag.xml" method="GET">
         <Play loop="3">choose.mp3</Play>
-        <Pause length="1"/>
     </Gather>
     <Play>bye.mp3</Play>
 </Response>
