@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Play>welcome.mp3</Play>
-	<Gather timeout="105" numDigits="1" action="mittag.xml">
+	<Gather timeout="105" numDigits="1" action="https://manuelberger.com/twilio/mittag.xml">
         <Play loop="3">choose.mp3</Play>
         <Pause length="1"/>
     </Gather>
