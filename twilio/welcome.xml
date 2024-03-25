@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Play>welcome.mp3</Play>
-	<Gather timeout="3" numDigits="1" action="mittag.xml" method="GET">
-        <Play loop="3">choose.mp3</Play>
-    </Gather>
-    <Play>bye.mp3</Play>
+	<Dial>+436641649970</Dial>
 </Response>
